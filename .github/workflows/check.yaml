@@ -27,6 +27,5 @@ jobs:
       - name: Run devtools::check()
         run: devtools::check(
           args = c("--no-manual", "--as-cran"),
-          error_on = "error"
-        )
+          error_on = "error")
         shell: Rscript {0}
