@@ -15,15 +15,19 @@ app_server <- function(input, output, session) {
         filter_ratings() %>%
         filter_country() %>%
         filter_price() %>%
+        dplyr::mutate(
+          rating_per_price = round(.data$rating_per_price, 2),
+          join_score = round(100 * .data$join_score, 2)
+        ) %>%
         dplyr::select(
-          "name",
-          "price",
-          "ratings_average",
-          "ratings_count",
-          "volume",
-          "country",
-          "rating_per_price",
-          "join_score"
+          Namn = "name",
+          Pris = "price",
+          Snittbetyg = "ratings_average",
+          "Antal betyg" = "ratings_count",
+          Volym = "volume",
+          Land = "country",
+          "Betyg per krong" = "rating_per_price",
+          Matchningsbetyg = "join_score"
         )
     },
     rownames = FALSE
@@ -47,7 +51,7 @@ app_server <- function(input, output, session) {
   filter_price <- function(df) {
     df %>%
       dplyr::filter(
-        dplyr::between(.data$price, input$price[1], input$price[2])
+        dplyr::between(.data$price, input$min_price, input$max_price)
       )
   }
 
@@ -68,6 +72,16 @@ app_server <- function(input, output, session) {
     df %>%
       dplyr::filter(
         dplyr::if_all(dplyr::all_of(input$taste), as.logical)
+      )
+  }
+
+  filter_category <- function(df) {
+    if (is.null(input$category)) {
+      return(df)
+    }
+    df %>%
+      dplyr::filter(
+        .data$categoryLevel2 %in% input$category
       )
   }
 

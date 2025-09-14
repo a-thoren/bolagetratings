@@ -10,13 +10,16 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     fluidPage(
-      titlePanel("Vivino ratings for Systembolaget"),
+      titlePanel("Vivino betyg för Systembolaget"),
       sidebarLayout(
         sidebarPanel(
-          sliderInput("ratings", "Average rating:", min = 0, max = 5, step = 0.01, value = c(0, 5)),
-          selectInput("countries", "Countries:", multiple = TRUE, choices = country_list()),
-          sliderInput("price", "Price:", min = 0, max = max_price(), step = 1, value = c(0, max_price())),
-          selectInput("store", "Store:", choices = store_list()),
+          sliderInput("ratings", "Snittbetyg:", min = 0, max = 5, step = 0.01, value = c(0, 5)),
+          selectInput("countries", "Land:", multiple = TRUE, choices = country_list()),
+          fluidRow(
+            column(6, numericInput("min_price", "Pris:", value = 0, min = 0, max = max_price())),
+            column(6, numericInput("max_price", "", value = max_price(), min = 0, max = max_price()))
+          ),
+          selectInput("store", "Butik:", choices = store_list()),
           selectInput(
             "taste",
             label = tags$span(
@@ -29,7 +32,8 @@ app_ui <- function(request) {
             ),
             choices = get_taste_symbol_list(),
             multiple = TRUE
-          )
+          ),
+          selectInput("category", "Kategori:", choices = category_list(), multiple = TRUE)
         ),
 
         mainPanel(

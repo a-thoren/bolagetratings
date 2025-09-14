@@ -49,3 +49,9 @@ get_taste_symbol_list <- function() {
   )
 
 }
+
+category_list <- function() {
+  merged %>%
+    dplyr::distinct(.data$categoryLevel2) %>%
+    dplyr::pull("categoryLevel2")
+}
