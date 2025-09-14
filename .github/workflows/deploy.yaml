@@ -46,8 +46,8 @@ jobs:
 
       - name: Deploy app to shinyapps.io
         env:
-          SHINYAPPS_NAME: ${{ secrets.SHINYAPPS_NAME }}
-          SHINYAPPS_ACCOUNT: ${{ secrets.SHINYAPPS_ACCOUNT }}
+          SHINYAPPS_NAME: ${{ vars.SHINYAPPS_NAME }}
+          SHINYAPPS_ACCOUNT: ${{ vars.SHINYAPPS_ACCOUNT }}
           SHINYAPPS_TOKEN: ${{ secrets.SHINYAPPS_TOKEN }}
           SHINYAPPS_SECRET: ${{ secrets.SHINYAPPS_SECRET }}
         run: |
