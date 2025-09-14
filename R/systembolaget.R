@@ -60,6 +60,8 @@ get_produts_page <- function(page = 1, storeId = NULL) {
 #' @export
 get_products <- function(storeId = NULL) {
 
+  message(sprintf("Getting products for store %s...", storeId))
+
   res <- get_produts_page(storeId = storeId)
 
   metadata <- res$metadata
@@ -75,8 +77,9 @@ get_products <- function(storeId = NULL) {
   }
 
   if (!is.null(storeId)) {
+    if (length(products) == 0) return(NULL)
     products <- products %>%
-      dplyr::select(.data$productId) %>%
+      dplyr::select("productId") %>%
       dplyr::mutate(storeId = .env$storeId)
   }
 
@@ -87,7 +90,7 @@ get_products <- function(storeId = NULL) {
 
 get_store_products <- function(stores) {
   store_produts <- stores %>%
-    dplyr::filter(.data$city == "GÖTEBORG") %>%
+    dplyr::filter(tolower(.data$city) %in% c("göteborg", "västra frölunda")) %>%
     dplyr::pull("siteId") %>%
     purrr::map(get_products) %>%
     dplyr::bind_rows()

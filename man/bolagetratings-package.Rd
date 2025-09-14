@@ -6,6 +6,8 @@
 \alias{bolagetratings-package}
 \title{bolagetratings: Ratings for Systembolaget}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Scrapes, merges, and displays Vivino and Untappd ratings for products in Systembolaget.
 }
 \author{
