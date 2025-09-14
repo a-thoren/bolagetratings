@@ -1,3 +1,3 @@
-# bolagetratings 0.0.1
+# bolagetratings 1.0.0
 
-* Initial CRAN submission.
+* Initial release.

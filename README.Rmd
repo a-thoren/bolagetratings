@@ -15,46 +15,6 @@ output: github_document
 
 # `{bolagetratings}`
 
-<!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-<!-- badges: end -->
+A Shiny app and related scripts used to scrape and match data from Systembolaget and Vivino.
 
-## Installation
-
-You can install the development version of `{bolagetratings}` like so:
-
-```{r}
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
-```
-
-## Run
-
-You can launch the application by running:
-
-```{r, eval = FALSE}
-bolagetratings::run_app()
-```
-
-## About
-
-You are reading the doc about version : `r golem::pkg_version()`
-
-This README has been compiled on the
-
-```{r}
-Sys.time()
-```
-
-Here are the tests results and package coverage:
-
-```{r, error = TRUE}
-devtools::check(quiet = TRUE)
-```
-
-```{r echo = FALSE}
-unloadNamespace("bolagetratings")
-```
-
-```{r, error = TRUE}
-covr::package_coverage()
-```
+App available at: https://a-thoren.shinyapps.io/bolagetratings/
