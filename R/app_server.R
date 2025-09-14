@@ -15,6 +15,7 @@ app_server <- function(input, output, session) {
         filter_ratings() %>%
         filter_country() %>%
         filter_price() %>%
+        filter_category() %>%
         dplyr::mutate(
           rating_per_price = round(.data$rating_per_price, 2),
           join_score = round(100 * .data$join_score, 2)
