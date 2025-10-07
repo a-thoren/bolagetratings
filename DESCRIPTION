@@ -1,6 +1,6 @@
 Package: bolagetratings
 Title: Ratings for Systembolaget
-Version: 1.0.2
+Version: 1.1.0
 Authors@R: 
     person("Alexander", "Thorén", , "alethoren@gmail.com", role = c("aut", "cre"))
 Description: Scrapes, merges, and displays Vivino and Untappd ratings for

@@ -22,7 +22,9 @@ merge_data <- function(systembolaget, vivino) {
       "categoryLevel2",
       "categoryLevel3",
       "originLevel1",
-      "tasteSymbols"
+      "tasteSymbols",
+      "isOrganic",
+      "productNumberShort"
     ) %>%
     dplyr::right_join(
       vivino,

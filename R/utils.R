@@ -16,13 +16,20 @@ store_list <- function() {
 
   tmp <- stores %>%
     dplyr::semi_join(store_products, by = dplyr::join_by("siteId" == "storeId")) %>%
-    dplyr::select("siteId", "displayName")
+    dplyr::mutate(
+      name = sprintf(
+        "%s, %s",
+        stringr::str_to_title(.data$city),
+        stringr::str_to_title(.data$displayName)
+        )
+    ) %>%
+    dplyr::select("siteId", "name")
 
   c(
     "Alla" = "0",
     stats::setNames(
       dplyr::pull(tmp, "siteId"),
-      dplyr::pull(tmp, "displayName")
+      dplyr::pull(tmp, "name")
     )
   )
 

@@ -33,7 +33,8 @@ app_ui <- function(request) {
             choices = get_taste_symbol_list(),
             multiple = TRUE
           ),
-          selectInput("category", "Kategori:", choices = category_list(), multiple = TRUE)
+          selectInput("category", "Kategori:", choices = category_list(), multiple = TRUE),
+          checkboxInput("organic", "Ekologiskt")
         ),
 
         mainPanel(

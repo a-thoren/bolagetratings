@@ -16,12 +16,14 @@ app_server <- function(input, output, session) {
         filter_country() %>%
         filter_price() %>%
         filter_category() %>%
+        filter_organic() %>%
         dplyr::mutate(
           rating_per_price = round(.data$rating_per_price, 2),
           join_score = round(100 * .data$join_score, 2)
         ) %>%
         dplyr::select(
           Namn = "name",
+          Nr = "productNumberShort",
           Pris = "price",
           Snittbetyg = "ratings_average",
           "Antal betyg" = "ratings_count",
@@ -84,6 +86,14 @@ app_server <- function(input, output, session) {
       dplyr::filter(
         .data$categoryLevel2 %in% input$category
       )
+  }
+
+  filter_organic <- function(df) {
+    if (!input$organic) {
+      return(df)
+    }
+    df %>%
+      dplyr::filter(.data$isOrganic)
   }
 
 }

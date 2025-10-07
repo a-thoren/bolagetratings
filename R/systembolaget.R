@@ -90,7 +90,15 @@ get_products <- function(storeId = NULL) {
 
 get_store_products <- function(stores) {
   store_produts <- stores %>%
-    dplyr::filter(tolower(.data$city) %in% c("göteborg", "västra frölunda")) %>%
+    dplyr::filter(
+      tolower(.data$city) %in% c(
+        "göteborg",
+        "västra frölunda",
+        "kalmar",
+        "malmö",
+        "lund"
+        )
+      ) %>%
     dplyr::pull("siteId") %>%
     purrr::map(get_products) %>%
     dplyr::bind_rows()

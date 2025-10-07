@@ -9,4 +9,12 @@ vivino <- extract_vivino_products()
 
 merged <- merge_data(products, vivino)
 
-usethis::use_data(merged, store_products, stores, overwrite = TRUE, internal = TRUE)
+usethis::use_data(
+  merged,
+  products,
+  vivino,
+  store_products,
+  stores,
+  overwrite = TRUE,
+  internal = TRUE
+)
